@@ -13,6 +13,7 @@ import { nextTick, ref, reactive } from 'vue'
 
 const count = ref(0)
 const text = ref('')
+const awesome = ref(true)
 const obj = reactive({
   nested: { count: 0 },
   arr: ['foo', 'bar']
@@ -40,7 +41,7 @@ function mutateDeeply() {
   obj.arr.push('baz')
 }
 function calculateBooksMessage() {
-  return this.author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Yes' : 'No'
 }
 function now() {
   return Date.now()
@@ -59,4 +60,9 @@ function now() {
   <br>
   <p>Has published books:</p>
   <span>{{ calculateBooksMessage() }} {{ now() }}</span>
+  <br>
+  <br>
+  <button @click="awesome = !awesome">Toggle</button>
+  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-else>Oh no 😢</h1>
 </template>
