@@ -26,6 +26,8 @@ const author = reactive({
     'Vue 4 - The Mystery'
   ]
 })
+const parentMessage = 'Parent'
+const messages = reactive([{ message: 'Foo' }, { message: 'Bar' }])
 
 function increment() {
   count.value++
@@ -65,4 +67,8 @@ function now() {
   <button @click="awesome = !awesome">Toggle</button>
   <h1 v-if="awesome">Vue is awesome!</h1>
   <h1 v-else>Oh no 😢</h1>
+  <br>
+  <li v-for="(message, index) in messages">
+    {{ parentMessage }} - {{ index }} - {{ message.message }}
+  </li>
 </template>
