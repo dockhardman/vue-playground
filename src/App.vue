@@ -28,6 +28,7 @@ const author = reactive({
 })
 const parentMessage = 'Parent'
 const messages = reactive([{ message: 'Foo' }, { message: 'Bar' }])
+const sets = reactive([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
 
 function increment() {
   count.value++
@@ -47,6 +48,9 @@ function calculateBooksMessage() {
 }
 function now() {
   return Date.now()
+}
+function even(numbers) {
+  return numbers.filter(number => number % 2 === 0)
 }
 </script>
 
@@ -71,4 +75,7 @@ function now() {
   <li v-for="(message, index) in messages">
     {{ parentMessage }} - {{ index }} - {{ message.message }}
   </li>
+  <ul v-for="numbers in sets">
+    <li v-for="n in even(numbers)">{{ n }}</li>
+  </ul>
 </template>
